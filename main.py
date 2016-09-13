@@ -52,7 +52,6 @@ def run_script(google_id, script_function):
     script_service = ScriptService(google_id)
 
     response = script_service.run(function=script_function,
-                                  dev_mode=True,
                                   parameters=[])
     print response
 
