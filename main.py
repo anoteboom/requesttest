@@ -28,12 +28,7 @@ client_secrets = os.path.join(os.path.dirname(__file__), 'client-secrets.json')
 
 missing_client_secrets_message = 'no client secrets file on app'
 scopes = [
-    'https://www.googleapis.com/auth/drive',
-    'https://www.googleapis.com/auth/documents',
-    'https://www.googleapis.com/auth/spreadsheets',
     'https://www.googleapis.com/auth/script.storage',
-    'https://www.googleapis.com/auth/forms',
-    'https://spreadsheets.google.com/feeds',
     'https://www.googleapis.com/auth/plus.me',
     'https://www.googleapis.com/auth/userinfo.email'
 ]
@@ -42,7 +37,6 @@ decorator = oauth2decorator_from_clientsecrets(
     client_secrets,
     scope=scopes,
     message=missing_client_secrets_message)
-decorator.user_agent = 'VOGSY'
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -62,9 +56,7 @@ class MainHandler(webapp2.RequestHandler):
 
         self.response.write('Hello world!' +
                             '<p><a href = "/script/slowResponse" > slow </a></p>'
-                            '<p><a href = "/script/fastResponse" > fast </a></p>'
-                           )
-
+                            '<p><a href = "/script/fastResponse" > fast </a></p>')
 
 
 def run_script(google_id, script_function):
